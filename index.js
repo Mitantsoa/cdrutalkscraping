@@ -6,6 +6,7 @@ const app = express();
 const db = require('./src/service/mysqlAddCdr')
 const cronJson = require('./cron.json')
 const moment = require("moment");
+const fs = require('fs')
 
 config();
 
@@ -31,6 +32,8 @@ app.get('/startcron',async (req,res)=> {
         cronJson.countOfHit = cronID;
         res.send(cronJson);
     }
+
+    fs.writeFile("./cron.json",cronJson.toString(),"utf-8",()=>{})
 
 })
 app.get('/stopcron',async (req,res)=> {
