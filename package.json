@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "logs": "firebase functions:log",
     "start:dev": "nodemon ./index.js",
-    "bycron": "node indexcron.js",
+    "bycron": "node indexfetchcron.js",
     "gitpush": "git add . && git commit -m \"test bot\" && git push originhub master"
   },
   "keywords": [],
