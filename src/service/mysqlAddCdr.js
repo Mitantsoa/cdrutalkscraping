@@ -41,7 +41,7 @@ async function createtable(data){
 
 async function selectall(){
     const sql = "SELECT * FROM `datingcdrdetails`;";
-    let data = await con.execute(sql);
+    let data = await con.promise().query(sql).;
     return data
 }
 
