@@ -40,17 +40,8 @@ async function createtable(data){
 }
 
 async function selectall(){
-    let data = []
-    await con.connect(function (err){
-        if(err) throw err;
-        const sql = "SELECT * FROM `datingcdrdetails`;";
-        con.query(sql, function (err, result) {
-            if (err) throw err;
-            logger(result);
-            data = result;
-            return result;
-        });
-    })
+    const sql = "SELECT * FROM `datingcdrdetails`;";
+    let data = await con.execute(sql);
     return data
 }
 
