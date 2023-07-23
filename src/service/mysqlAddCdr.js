@@ -15,7 +15,7 @@ async function mysqlAddCdr(data){
     con.connect(function (err){
         if(err) throw err;
         logger("Inserting data in db");
-        const sql = "INSERT INTO `db_utalkdating`.`datingcdrdetails`(`datingcdrdetailslogin`,`datingcdrdetailscountcall`,`datingcdrdetailscallduration`,`datingcdrdetailscallacd`,`datingcdrdetailssnapshotdate`) VALUES ?";
+        const sql = "INSERT INTO `victoryp_utalkcenter`.`datingcdrdetails`(`datingcdrdetailslogin`,`datingcdrdetailscountcall`,`datingcdrdetailscallduration`,`datingcdrdetailscallacd`,`datingcdrdetailssnapshotdate`) VALUES ?";
         con.query(sql, [data], function (err, result) {
             if (err) throw err;
             logger("Number of records inserted: " + result.affectedRows);
