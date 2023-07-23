@@ -2,5 +2,6 @@
   "isrunning" : false,
   "startDate" : "--",
   "endDate" : "--",
-  "countOfHit" : 0
+  "countOfHit" : 0,
+  "other": "..."
 }
