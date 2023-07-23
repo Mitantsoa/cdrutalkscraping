@@ -19,7 +19,6 @@ app.get('/startcron',async (req,res)=> {
             cronJson.countOfHit = 0;
             cronJson.isrunning = true;
             cronJson.countOfHit++;
-            res.send(cronJson);
         }catch (e) {
             console.log(e)
             res.send(e);
@@ -30,17 +29,16 @@ app.get('/startcron',async (req,res)=> {
         logger("Run cron ID:"+cronID);
         let isLogedIn = await login()
         cronJson.countOfHit = cronID;
-        res.send(cronJson);
     }
-
     fs.writeFile("./cron.json",cronJson.toString(),"utf-8",()=>{})
-
+    res.send(cronJson);
 })
 app.get('/stopcron',async (req,res)=> {
     if(cronJson.isrunning){
         try{
             cronJson.endDate = moment().format();
             cronJson.isrunning = false;
+            fs.writeFile("./cron.json",cronJson.toString(),"utf-8",()=>{})
             res.send(cronJson);
         }catch (e) {
             res.send(e);
