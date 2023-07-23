@@ -40,15 +40,18 @@ async function createtable(data){
 }
 
 async function selectall(){
-    con.connect(function (err){
+    let data = []
+    await con.connect(function (err){
         if(err) throw err;
         const sql = "SELECT * FROM `datingcdrdetails`;";
         con.query(sql, function (err, result) {
             if (err) throw err;
             logger(result);
+            data = result;
             return result;
         });
     })
+    return data
 }
 
 module.exports = {mysqlAddCdr,createtable,selectall}
