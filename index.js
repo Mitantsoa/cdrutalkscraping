@@ -4,7 +4,6 @@ const express = require("express");
 const {logger} = require("./src/service/utils");
 const app = express();
 const db = require('./src/service/mysqlAddCdr')
-const cronJson = require('./cron.json')
 const moment = require("moment");
 const fs = require('fs')
 
@@ -35,22 +34,23 @@ app.get('/startcron',async (req,res)=> {
     res.send("cron running");
 })
 app.get('/stopcron',async (req,res)=> {
-    if(cronJson.isrunning){
-        try{
-            cronJson.endDate = moment().format();
-            cronJson.isrunning = false;
-            fs.writeFile("./cron.json",cronJson.toString(),"utf-8",()=>{})
-            res.send(cronJson);
-        }catch (e) {
-            res.send(e);
-        }
-    }else{
-        res.send("Cron is not running")
-    }
+    // if(cronJson.isrunning){
+    //     try{
+    //         cronJson.endDate = moment().format();
+    //         cronJson.isrunning = false;
+    //         fs.writeFile("./cron.json",cronJson.toString(),"utf-8",()=>{})
+    //         res.send(cronJson);
+    //     }catch (e) {
+    //         res.send(e);
+    //     }
+    // }else{
+    //     res.send("Cron is not running")
+    // }
+    res.send("cron running");
 
 })
 app.get('/',(req,res)=>{
-    res.send(cronJson);
+    res.send("cron running");
 })
 
 app.get('/select',async (req,res)=>{
