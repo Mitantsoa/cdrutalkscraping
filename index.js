@@ -25,9 +25,10 @@ app.get('/startcron',async (req,res)=> {
         }
 
     }else{
-        logger("Run cron ID:"+cronJson.countOfHit++);
+        const cronID = cronJson.countOfHit++
+        logger("Run cron ID:"+cronID);
         let isLogedIn = await login()
-        cronJson.countOfHit++;
+        cronJson.countOfHit = cronID;
         res.send(cronJson);
     }
 
