@@ -40,7 +40,7 @@ async function createtable(data){
 }
 
 async function selectall(){
-    const sql = "SELECT * FROM `datingcdrdetails`;";
+    const sql = "SELECT count(*) FROM `datingcdrdetails`;";
     let data = await con.promise().query(sql);
     return data[0]
 }
