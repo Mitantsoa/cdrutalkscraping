@@ -42,7 +42,7 @@ async function createtable(data){
 async function selectall(){
     const sql = "SELECT * FROM `datingcdrdetails`;";
     let data = await con.promise().query(sql);
-    return data
+    return data[0]
 }
 
 module.exports = {mysqlAddCdr,createtable,selectall}
